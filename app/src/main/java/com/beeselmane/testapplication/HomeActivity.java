@@ -1,9 +1,7 @@
 package com.beeselmane.testapplication;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
@@ -36,7 +34,7 @@ public class HomeActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_applist);
-        //this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         this.reloadAppList();
         this.setupAppListView();
@@ -49,7 +47,7 @@ public class HomeActivity extends Activity
     @Override
     protected void onResume() {
         super.onResume();
-        //this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
     private void addClickListener()
@@ -59,11 +57,9 @@ public class HomeActivity extends Activity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 AppPackage application = apps.get(position);
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_LAUNCHER);
-                intent.setComponent(new ComponentName(application.name.toString(), application.publicName));
+                Intent intent = self.getPackageManager().getLaunchIntentForPackage(application.name.toString());
                 self.startActivity(intent);
-                //self.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                self.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
     }
@@ -111,20 +107,10 @@ public class HomeActivity extends Activity
             application.label = info.loadLabel(packageManager);
             application.name = info.activityInfo.packageName;
             application.icon = info.activityInfo.loadIcon(packageManager);
+            //application.icon = this.getResources().getDrawable(android.R.drawable.sym_def_app_icon, this.getTheme());
             application.publicName = info.activityInfo.name;
             this.apps.add(application);
         }
-
-        // This doesn't work
-        /*for (ApplicationInfo info : appInfoList)
-        {
-            AppPackage application = new AppPackage();
-            application.label = packageManager.getApplicationLabel(info);
-            application.name = info.packageName;
-            application.icon = packageManager.getApplicationIcon(info);
-            application.publicName = info.name;
-            this.apps.add(application);
-        }*/
 
         Collections.sort(this.apps, new Comparator<AppPackage>() {
             @Override
@@ -140,6 +126,6 @@ public class HomeActivity extends Activity
     protected void onRestart()
     {
         super.onRestart();
-        //this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }
