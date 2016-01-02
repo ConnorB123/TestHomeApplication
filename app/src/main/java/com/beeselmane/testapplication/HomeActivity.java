@@ -99,16 +99,10 @@ public class HomeActivity extends Activity
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
         if (!HomeActivity.showAllBundles) intent.addCategory(Intent.CATEGORY_LAUNCHER);
         List<ResolveInfo> availableActivities = packageManager.queryIntentActivities(intent, 0);
-        //List<ApplicationInfo> appInfoList =  packageManager.getInstalledApplications(0);
 
         for (ResolveInfo info : availableActivities)
         {
-            AppPackage application = new AppPackage();
-            application.label = info.loadLabel(packageManager);
-            application.name = info.activityInfo.packageName;
-            application.icon = info.activityInfo.loadIcon(packageManager);
-            //application.icon = this.getResources().getDrawable(android.R.drawable.sym_def_app_icon, this.getTheme());
-            application.publicName = info.activityInfo.name;
+            AppPackage application = new AppPackage(packageManager, info);
             this.apps.add(application);
         }
 
