@@ -1,12 +1,18 @@
 package com.beeselmane.testapplication;
 
 import android.app.Activity;
+import android.app.WallpaperManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -15,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -40,9 +47,58 @@ public class HomeActivity extends Activity
         this.setupAppListView();
         this.addClickListener();
         this.setTitle("Applications");
-
-        System.out.println("onCreate()");
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.homebar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    int PICK_IMAGE_REQUEST = 1;
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_wallpaper) {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+
+            WallpaperManager myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
+         //   try {
+         //      myWallpaperManager.setResource(R.drawable.ic_wallpaper);
+         //   } catch (IOException e) {
+         //       e.printStackTrace();
+         //   }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri uri = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     @Override
     protected void onResume() {
@@ -122,4 +178,5 @@ public class HomeActivity extends Activity
         super.onRestart();
         this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
+
 }
