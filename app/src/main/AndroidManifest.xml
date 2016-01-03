@@ -9,24 +9,35 @@
         android:theme="@style/LauncherTheme">
         <activity
             android:name=".HomeActivity"
-            android:label="@string/list_title"
+            android:label="@string/activity_name"
             android:launchMode="singleTask"
             android:stateNotNeeded="true"
             android:theme="@style/LauncherTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.SEARCH" />
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable">
+            </meta-data>
         </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings_title"
             android:theme="@style/SettingsTheme"
             android:parentActivityName=".HomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.beeselmane.testapplication.HomeActivity" />
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.beeselmane.testapplication.HomeActivity">
+            </meta-data>
+        </activity>
+        <activity android:name=".GlobalApplicationState$ApplicationStateChangedAction">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
         </activity>
     </application>
 </manifest>

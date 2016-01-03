@@ -1,9 +1,16 @@
 <resources>
     <string name="app_name">Basic Launcher</string>
     <string name="list_title">Applications</string>
+    <string name="activity_name">Basic Launcher</string>
+    <string name="search_hint">Search Applications&#8230;</string>
 
     <!-- Strings related to Settings -->
     <string name="settings_title">Settings</string>
     <string name="use_dark_bg">Use Dark Launcher Background</string>
     <string name="darkbg_subtitle">For use on Lighter Wallpapers</string>
+
+    <!-- Bar Items -->
+    <string name="settings_bar_title">Settings</string>
+    <string name="wallpaper_bar_title">Set Wallpaper</string>
+    <string name="search_bar_title">Search Installed Apps</string>
 </resources>
