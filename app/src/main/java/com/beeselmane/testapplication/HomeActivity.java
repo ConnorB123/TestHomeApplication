@@ -183,6 +183,7 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
                 final AppPackage application = self.currentPackageList.get(position);
                 final Dialog dialog = new Dialog(self);
 
+                if (application.isSystemApplication) return false;
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.uninstall_dialog);
                 dialog.setTitle(R.string.uninstall_title);

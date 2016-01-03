@@ -3,6 +3,7 @@ package com.beeselmane.testapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -75,6 +76,7 @@ public class GlobalApplicationState
         for (ResolveInfo info : availableActivities)
         {
             AppPackage app = new AppPackage(packageManager, info);
+            app.isSystemApplication = (info.activityInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
             app.canOpenAsApplication = true;
             this.applications.add(app);
         }

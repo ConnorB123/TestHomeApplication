@@ -33,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/HomeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="191" column="93" selection-start-line="191" selection-start-column="93" selection-end-line="191" selection-end-column="93" />
+              <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1688#1728#0" expanded="true" />
@@ -42,44 +42,34 @@
                 <element signature="e#3081#3082#0" expanded="true" />
                 <element signature="e#5956#6452#0" expanded="true" />
                 <element signature="e#6451#6452#0" expanded="true" />
-                <element signature="e#6508#8182#0" expanded="true" />
-                <element signature="e#6987#7011#0" expanded="true" />
-                <element signature="e#7502#7962#0" expanded="true" />
-                <element signature="e#7961#7962#0" expanded="true" />
-                <element signature="e#8181#8182#0" expanded="true" />
+                <element signature="e#6508#8249#0" expanded="true" />
+                <element signature="e#7054#7078#0" expanded="true" />
+                <element signature="e#7569#8029#0" expanded="true" />
+                <element signature="e#8028#8029#0" expanded="true" />
+                <element signature="e#8248#8249#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppPackage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/AppPackage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GlobalApplicationState.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GlobalApplicationState.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/GlobalApplicationState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="39" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.4558233">
+              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding>
-                <element signature="e#1934#1935#0" expanded="true" />
-                <element signature="e#1969#1970#0" expanded="true" />
+                <element signature="e#1977#1978#0" expanded="true" />
+                <element signature="e#2012#2013#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SettingsActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SettingsActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/SettingsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.90824467">
-              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1549,11 +1539,11 @@
         <option value="$PROJECT_DIR$/app/src/main/res/menu/homebar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/beeselmane/testapplication/ApplicationTest.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/GlobalApplicationState.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/AppPackage.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/HomeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/uninstall_dialog.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/GlobalApplicationState.java" />
       </list>
     </option>
   </component>
@@ -1976,7 +1966,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5028612" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32564104" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32564104" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.49713877" order="2" side_tool="false" content_ui="tabs" />
@@ -2021,34 +2011,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/HomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1688#1728#0" expanded="true" />
-            <element signature="e#2394#2413#0" expanded="true" />
-            <element signature="e#3038#3039#0" expanded="true" />
-            <element signature="e#3081#3082#0" expanded="true" />
-            <element signature="e#5956#6452#0" expanded="true" />
-            <element signature="e#6451#6452#0" expanded="true" />
-            <element signature="e#6508#8182#0" expanded="true" />
-            <element signature="e#6987#7011#0" expanded="true" />
-            <element signature="e#7502#7962#0" expanded="true" />
-            <element signature="e#7961#7962#0" expanded="true" />
-            <element signature="e#8181#8182#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/AppPackage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2058,11 +2020,11 @@
             <element signature="e#3081#3082#0" expanded="true" />
             <element signature="e#5956#6452#0" expanded="true" />
             <element signature="e#6451#6452#0" expanded="true" />
-            <element signature="e#6508#8182#0" expanded="true" />
-            <element signature="e#6987#7011#0" expanded="true" />
-            <element signature="e#7502#7962#0" expanded="true" />
-            <element signature="e#7961#7962#0" expanded="true" />
-            <element signature="e#8181#8182#0" expanded="true" />
+            <element signature="e#6508#8249#0" expanded="true" />
+            <element signature="e#7054#7078#0" expanded="true" />
+            <element signature="e#7569#8029#0" expanded="true" />
+            <element signature="e#8028#8029#0" expanded="true" />
+            <element signature="e#8248#8249#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2071,13 +2033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/content/pm/ApplicationInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27925533">
-          <caret line="41" column="58" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -2341,22 +2296,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/content/Intent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45381525">
-          <caret line="1829" column="31" selection-start-line="1829" selection-start-column="31" selection-end-line="1829" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/AppPackage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47974414">
@@ -2387,38 +2326,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/GlobalApplicationState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="92" column="39" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="39" />
-          <folding>
-            <element signature="e#1934#1935#0" expanded="true" />
-            <element signature="e#1969#1970#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="191" column="93" selection-start-line="191" selection-start-column="93" selection-end-line="191" selection-end-column="93" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1688#1728#0" expanded="true" />
-            <element signature="e#2394#2413#0" expanded="true" />
-            <element signature="e#3038#3039#0" expanded="true" />
-            <element signature="e#3081#3082#0" expanded="true" />
-            <element signature="e#5956#6452#0" expanded="true" />
-            <element signature="e#6451#6452#0" expanded="true" />
-            <element signature="e#6508#8182#0" expanded="true" />
-            <element signature="e#6987#7011#0" expanded="true" />
-            <element signature="e#7502#7962#0" expanded="true" />
-            <element signature="e#7961#7962#0" expanded="true" />
-            <element signature="e#8181#8182#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/uninstall_dialog.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.373444">
@@ -2437,10 +2344,82 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.90824467">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/content/pm/ResolveInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3324468">
+          <caret line="102" column="29" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/content/Intent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2925532">
+          <caret line="2997" column="7" selection-start-line="2997" selection-start-column="7" selection-end-line="2997" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/content/pm/PackageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2526596">
+          <caret line="224" column="43" selection-start-line="224" selection-start-column="43" selection-end-line="224" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/content/pm/ApplicationInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3125">
+          <caret line="506" column="7" selection-start-line="506" selection-start-column="7" selection-end-line="506" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/AppPackage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41888297">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1688#1728#0" expanded="true" />
+            <element signature="e#2394#2413#0" expanded="true" />
+            <element signature="e#3038#3039#0" expanded="true" />
+            <element signature="e#3081#3082#0" expanded="true" />
+            <element signature="e#5956#6452#0" expanded="true" />
+            <element signature="e#6451#6452#0" expanded="true" />
+            <element signature="e#6508#8249#0" expanded="true" />
+            <element signature="e#7054#7078#0" expanded="true" />
+            <element signature="e#7569#8029#0" expanded="true" />
+            <element signature="e#8028#8029#0" expanded="true" />
+            <element signature="e#8248#8249#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/beeselmane/testapplication/GlobalApplicationState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4558233">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding>
+            <element signature="e#1977#1978#0" expanded="true" />
+            <element signature="e#2012#2013#0" expanded="true" />
           </folding>
         </state>
       </provider>
