@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_settings"
+    <item android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings"
         android:title="Settings"
-        app:showAsAction="always"/>
-
-    <item
-        android:id="@+id/action_wallpaper"
+        app:showAsAction="always">
+    </item>
+    <item android:id="@+id/action_wallpaper"
         android:icon="@drawable/ic_wallpaper"
         android:title="Wallpaper"
-        app:showAsAction="ifRoom"/>
-
-
-
+        app:showAsAction="ifRoom">
+    </item>
 </menu>

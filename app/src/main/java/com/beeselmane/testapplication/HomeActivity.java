@@ -3,6 +3,7 @@ package com.beeselmane.testapplication;
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
@@ -10,7 +11,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,11 +34,24 @@ import java.util.List;
 public class HomeActivity extends Activity
 {
     private static boolean showAllBundles = false;
-    private static boolean darkItems = false;
 
     private List<AppPackage> apps = null;
     private ListView appListView = null;
     private HomeActivity self = this;
+
+    private SharedPreferences preferences = null;
+    private boolean useDarkItems = false;
+    private int PICK_IMAGE_REQUEST = 1;
+
+    public void reload()
+    {
+        if (preferences == null) preferences = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
+        this.useDarkItems = preferences.getBoolean("UseDarkBackground", false);
+
+        this.reloadAppList();
+        this.setupAppListView();
+        this.addClickListener();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,75 +60,78 @@ public class HomeActivity extends Activity
         this.setContentView(R.layout.activity_applist);
         this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
-        this.reloadAppList();
-        this.setupAppListView();
-        this.addClickListener();
-        this.setTitle("Applications");
+        this.reload();
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.homebar, menu);
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        this.reload();
+    }
+
+    @Override
+    protected void onRestart()
+    {
+        super.onRestart();
+        this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        this.reload();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        this.getMenuInflater().inflate(R.menu.homebar, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    int PICK_IMAGE_REQUEST = 1;
-
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
+            this.startActivity(intent);
             return true;
         } else if (id == R.id.action_wallpaper) {
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-
-            WallpaperManager myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
-         //   try {
-         //      myWallpaperManager.setResource(R.drawable.ic_wallpaper);
-         //   } catch (IOException e) {
-         //       e.printStackTrace();
-         //   }
+            this.startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
         }
 
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
+            WallpaperManager wallpaperManager = WallpaperManager.getInstance(this.getApplicationContext());
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
             Uri uri = data.getData();
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                ImageView imageView = (ImageView) findViewById(R.id.imageView);
-                imageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
+                wallpaperManager.setBitmap(bitmap);
+                wallpaperManager.suggestDesiredDimensions(displayMetrics.widthPixels, displayMetrics.heightPixels);
+                Toast.makeText(this, "Successfully changed wallpaper!", Toast.LENGTH_SHORT).show();
+            } catch (IOException ex) {
+                Toast.makeText(this, "Error setting wallpaper!", Toast.LENGTH_SHORT).show();
+                ex.printStackTrace(System.err);
             }
         }
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
     private void addClickListener()
     {
         this.appListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AppPackage application = apps.get(position);
                 Intent intent = self.getPackageManager().getLaunchIntentForPackage(application.name.toString());
                 self.startActivity(intent);
@@ -124,12 +144,11 @@ public class HomeActivity extends Activity
     {
         ArrayAdapter<AppPackage> adapter = new ArrayAdapter<AppPackage>(this, R.layout.list_item, this.apps) {
             @Override
-            public View getView(int position, View convertView, ViewGroup parent)
-            {
+            public View getView(int position, View convertView, ViewGroup parent) {
                 if (convertView == null) convertView = self.getLayoutInflater().inflate(R.layout.list_item, null);
                 AppPackage representedApplication = apps.get(position);
 
-                if (HomeActivity.darkItems) convertView.setBackgroundColor(0x2F000000);
+                if (self.useDarkItems) convertView.setBackgroundColor(0x2F000000);
                 else convertView.setBackgroundColor(Color.TRANSPARENT);
 
                 ImageView iconView = (ImageView)convertView.findViewById(R.id.item_app_icon);
@@ -169,14 +188,6 @@ public class HomeActivity extends Activity
             }
         });
 
-        if (HomeActivity.darkItems) this.appListView.setDivider(new ColorDrawable(0x333333));
+        if (this.useDarkItems) this.appListView.setDivider(new ColorDrawable(0x333333));
     }
-
-    @Override
-    protected void onRestart()
-    {
-        super.onRestart();
-        this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-    }
-
 }
