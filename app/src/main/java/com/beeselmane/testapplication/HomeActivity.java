@@ -3,18 +3,13 @@ package com.beeselmane.testapplication;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.SearchManager;
-import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,16 +21,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends Activity implements SearchManager.OnDismissListener, SearchView.OnQueryTextListener
 {
-    private static boolean showAllBundles = false;
-
     private GlobalApplicationState applicationState = null;
     private List<AppPackage> currentPackageList = null;
     private MenuItem searchMenuItem = null;
@@ -44,7 +35,6 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
 
     private SharedPreferences preferences = null;
     private boolean useDarkItems = false;
-    private int PICK_IMAGE_REQUEST = 1;
 
     public void reload()
     {
@@ -52,7 +42,7 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
             this.searchMenuItem.collapseActionView();
 
         if (preferences == null) preferences = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
-        this.useDarkItems = preferences.getBoolean("UseDarkBackground", false);
+        this.useDarkItems = preferences.getBoolean(this.getString(R.string.key_use_dark_bg), false);
 
         if (this.useDarkItems) this.appListView.setDivider(new ColorDrawable(0x333333));
         this.updateAppListView(this.applicationState.installedApplications());
@@ -116,43 +106,14 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
+        if (item.getItemId() == R.id.action_settings)
+        {
             Intent intent = new Intent(this, SettingsActivity.class);
             this.startActivity(intent);
             return true;
-        } else if (id == R.id.action_wallpaper) {
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            this.startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            WallpaperManager wallpaperManager = WallpaperManager.getInstance(this.getApplicationContext());
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-            this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            Uri uri = data.getData();
-
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                wallpaperManager.setBitmap(bitmap);
-                wallpaperManager.suggestDesiredDimensions(displayMetrics.widthPixels, displayMetrics.heightPixels);
-                Toast.makeText(this, "Successfully changed wallpaper!", Toast.LENGTH_SHORT).show();
-            } catch (IOException ex) {
-                Toast.makeText(this, "Error setting wallpaper!", Toast.LENGTH_SHORT).show();
-                ex.printStackTrace(System.err);
-            }
-        }
     }
 
     @Override

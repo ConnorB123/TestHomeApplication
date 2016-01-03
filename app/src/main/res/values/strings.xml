@@ -13,4 +13,8 @@
     <string name="settings_bar_title">Settings</string>
     <string name="wallpaper_bar_title">Set Wallpaper</string>
     <string name="search_bar_title">Search Installed Apps</string>
+
+    <!-- Preference Keys -->
+    <string name="key_use_dark_bg">KeyUseDarkBackground</string>
+    <string name="key_set_wallpaper">KeySetWallpaper</string>
 </resources>

@@ -4,6 +4,8 @@
         android:title="@string/use_dark_bg"
         android:defaultValue="false"
         android:summary="@string/darkbg_subtitle"
-        android:key="UseDarkBackground">
+        android:key="@string/key_use_dark_bg">
     </CheckBoxPreference>
+    <Preference android:title="@string/wallpaper_bar_title"
+        android:key="KeySetWallpaper"/>
 </PreferenceScreen>
