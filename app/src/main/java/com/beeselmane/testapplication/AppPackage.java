@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 public class AppPackage
 {
     public boolean canOpenAsApplication = false;
+    public boolean isSystemApplication = false;
     public CharSequence label = null;
     public String publicName = null;
     public CharSequence name = null;

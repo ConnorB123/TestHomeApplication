@@ -2,7 +2,14 @@
     <string name="app_name">Basic Launcher</string>
     <string name="list_title">Applications</string>
     <string name="activity_name">Basic Launcher</string>
+
+    <!-- UI Strings -->
     <string name="search_hint">Search Applications&#8230;</string>
+    <string name="uninstall_body">Uninstall this application?</string>
+    <string name="uninstall_app_cd">Application</string>
+    <string name="uninstall_title">Uninstall Application</string>
+    <string name="uninstall_confirm_text">Yes</string>
+    <string name="uninstall_cancel_text">Cancel</string>
 
     <!-- Strings related to Settings -->
     <string name="settings_title">Settings</string>

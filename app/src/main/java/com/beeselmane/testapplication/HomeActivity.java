@@ -2,6 +2,7 @@ package com.beeselmane.testapplication;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -14,9 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -57,7 +60,6 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
         this.applicationState = new GlobalApplicationState(this);
         this.updateAppListView(this.applicationState.installedApplications());
         this.setTitle(R.string.list_title);
-        this.addClickListener();
     }
 
     @Override
@@ -143,19 +145,6 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
         this.updateAppListView(this.applicationState.installedApplications());
     }
 
-    private void addClickListener()
-    {
-        this.appListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AppPackage application = self.currentPackageList.get(position);
-                Intent intent = self.getPackageManager().getLaunchIntentForPackage(application.name.toString());
-                self.startActivity(intent);
-                self.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-            }
-        });
-    }
-
     private void updateAppListView(final List<AppPackage> apps)
     {
         this.appListView.setAdapter(new ArrayAdapter<AppPackage>(this, R.layout.list_item, apps) {
@@ -167,14 +156,62 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
                 if (self.useDarkItems) view.setBackgroundColor(0x2F000000);
                 else view.setBackgroundColor(Color.TRANSPARENT);
 
-                ImageView iconView = (ImageView)view.findViewById(R.id.item_app_icon);
+                ImageView iconView = (ImageView) view.findViewById(R.id.item_app_icon);
                 iconView.setImageDrawable(representedApplication.icon);
-                TextView labelView = (TextView)view.findViewById(R.id.item_app_label);
+                TextView labelView = (TextView) view.findViewById(R.id.item_app_label);
                 labelView.setText(representedApplication.label);
-                TextView nameView = (TextView)view.findViewById(R.id.item_app_name);
+                TextView nameView = (TextView) view.findViewById(R.id.item_app_name);
                 nameView.setText(representedApplication.name);
 
                 return view;
+            }
+        });
+
+        this.appListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AppPackage application = self.currentPackageList.get(position);
+                Intent intent = self.getPackageManager().getLaunchIntentForPackage(application.name.toString());
+                self.startActivity(intent);
+                self.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+            }
+        });
+
+        this.appListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                final AppPackage application = self.currentPackageList.get(position);
+                final Dialog dialog = new Dialog(self);
+
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.uninstall_dialog);
+                dialog.setTitle(R.string.uninstall_title);
+
+                Button cancelButton = (Button)dialog.findViewById(R.id.uninstall_cancel_button);
+                final Button confirmButton = (Button)dialog.findViewById(R.id.uninstall_confirm_button);
+                ImageView appLogoView = (ImageView)dialog.findViewById(R.id.uninstall_image);
+
+                appLogoView.setContentDescription(application.label);
+                appLogoView.setImageDrawable(application.icon);
+
+                View.OnClickListener onClickListener = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+
+                        if (view == confirmButton)
+                        {
+                            Intent uninstallIntent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE);
+                            self.startActivity(uninstallIntent);
+                        }
+                    }
+                };
+
+                confirmButton.setOnClickListener(onClickListener);
+                cancelButton.setOnClickListener(onClickListener);
+
+                dialog.show();
+                return true;
             }
         });
 

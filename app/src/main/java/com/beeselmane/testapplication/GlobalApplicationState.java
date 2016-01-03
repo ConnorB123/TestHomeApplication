@@ -30,18 +30,26 @@ public class GlobalApplicationState
         @Override
         public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState)
         {
+            if (state == null) new GlobalApplicationState(this.getBaseContext());
+
             super.onCreate(savedInstanceState, persistentState);
             Intent reason = this.getIntent();
-            Uri dataURI = reason.getData();
+            String dataString = reason.getDataString();
 
             if (reason.getAction().equals(Intent.ACTION_PACKAGE_ADDED)) {
-                System.out.println("Install: " + dataURI.toString());
+                System.out.println("Install: " + dataString);
+                state.packageChanged(this.findPackage(dataString), false);
             } else if (reason.getAction().equals(Intent.ACTION_PACKAGE_REMOVED)) {
-                System.out.println("Uninstall: " + dataURI.toString());
+                System.out.println("Uninstall: " + dataString);
+                state.packageChanged(this.findPackage(dataString), true);
             } else {
                 System.err.println("ApplicationStateChangedAction created with invalid reason '" + reason.getAction() + "'");
                 Toast.makeText(state.context, "Launcher Error!", Toast.LENGTH_SHORT).show();
             }
+        }
+
+        private AppPackage findPackage(String name) {
+            return null;
         }
     }
 
@@ -79,6 +87,10 @@ public class GlobalApplicationState
         });
 
         GlobalApplicationState.state = this;
+    }
+
+    public void packageChanged(AppPackage appPackage, boolean uninstalled) {
+        if (appPackage == null) return;
     }
 
     public List<AppPackage> installedApplications()
