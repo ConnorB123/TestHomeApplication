@@ -1,5 +1,6 @@
 <resources>
     <style name="LauncherTheme" parent="@android:style/Theme.DeviceDefault.Wallpaper">
+        <item name="android:windowTranslucentNavigation">true</item>
         <!-- Nothing to Customize -->
     </style>
     <style name="SettingsTheme" parent="Theme.AppCompat.Light.DarkActionBar">
