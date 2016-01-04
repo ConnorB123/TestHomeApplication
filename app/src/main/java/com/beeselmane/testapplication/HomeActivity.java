@@ -30,6 +30,9 @@ import java.util.List;
 
 public class HomeActivity extends Activity implements SearchManager.OnDismissListener, SearchView.OnQueryTextListener
 {
+    private static final int ANIMATION_ENTER = R.anim.slideleft;
+    private static final int ANIMATION_EXIT = R.anim.slideright;
+
     private GlobalApplicationState applicationState = null;
     private List<AppPackage> currentPackageList = null;
     private MenuItem searchMenuItem = null;
@@ -55,7 +58,7 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_applist);
-        this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        this.overridePendingTransition(HomeActivity.ANIMATION_ENTER, HomeActivity.ANIMATION_EXIT);
         this.appListView = (ListView)this.findViewById(R.id.app_list);
         this.applicationState = new GlobalApplicationState(this);
         this.updateAppListView(this.applicationState.installedApplications());
@@ -66,7 +69,7 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
     protected void onStart()
     {
         super.onStart();
-        this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        this.overridePendingTransition(HomeActivity.ANIMATION_ENTER, HomeActivity.ANIMATION_EXIT);
         this.reload();
     }
 
@@ -74,7 +77,7 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
     protected void onRestart()
     {
         super.onRestart();
-        this.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        this.overridePendingTransition(HomeActivity.ANIMATION_ENTER, HomeActivity.ANIMATION_EXIT);
         this.reload();
     }
 
@@ -173,7 +176,7 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
                 AppPackage application = self.currentPackageList.get(position);
                 Intent intent = self.getPackageManager().getLaunchIntentForPackage(application.name.toString());
                 self.startActivity(intent);
-                self.overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                self.overridePendingTransition(HomeActivity.ANIMATION_ENTER, HomeActivity.ANIMATION_EXIT);
             }
         });
 
