@@ -12,6 +12,14 @@
         android:actionViewClass="android.widget.SearchView"
         android:showAsAction="collapseActionView|ifRoom">
     </item>
+    <item android:id="@+id/action_store"
+        android:icon="@drawable/ic_store"
+        android:title="Play Store"
+        android:showAsAction="collapseActionView|ifRoom">
+
+    </item>
+
+
     <item android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings"
         android:title="@string/settings_bar_title"

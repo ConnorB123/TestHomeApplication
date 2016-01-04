@@ -118,6 +118,12 @@ public class HomeActivity extends Activity implements SearchManager.OnDismissLis
             return true;
         }
 
+        if (item.getItemId() == R.id.action_store)
+        {
+            Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.vending");
+            startActivity(launchIntent);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
